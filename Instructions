@@ -1,0 +1,45 @@
+class Inv {
+  
+  float tx;
+  float ty;
+  float x;
+  float y;
+  PImage fondo;
+  PImage titulo;
+  PImage insbot;
+  PImage inspal;
+  PShape graf;
+  PShape boton;
+  PShape palanca;
+  
+ Inv(){
+   
+  tx=displayWidth;
+  ty=displayHeight;
+  fondo= loadImage("fondo.jpg");
+  titulo= loadImage("trivia.png");
+  insbot= loadImage("ins boton.png");
+  inspal= loadImage("ins palanca.png");
+  graf= loadShape("controles.svg");
+  boton=graf.getChild("Capa 2");
+  palanca=graf.getChild("palanca");
+ }
+  
+  void display(){
+   image(fondo,0,0);
+   image(titulo, width/2-200, -30,500,392);
+   image(insbot,300,580,360,282);
+   image(inspal,300,320,360,282); 
+   shape(palanca,900,320,350,350);
+   shape(boton,1220,460,200,200);
+  }
+  
+ } 
+  
+  
+  
+  
+  
+  
+  
+  
