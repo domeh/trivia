@@ -1,0 +1,24 @@
+class Timer{
+  int in_time;
+  int to_time;
+  
+  Timer(int tiempo){
+   to_time=tiempo; 
+    
+  }
+  
+  void start() {
+   
+    in_time = millis(); 
+  }
+  
+   boolean pasarsig () { 
+    // Check how much time has passed
+    int tiempotrans = millis()- in_time;
+    if (tiempotrans > to_time) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
