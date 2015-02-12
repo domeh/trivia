@@ -1,0 +1,179 @@
+class Ques {
+
+  PImage fondo;
+  PFont fuente;
+  String[] lines= {
+    "1. Existen diecisiete países de mayor diversidad ocupan menos del 10% de", //0
+    "la superficie del planeta, pero albergan:", //1
+
+
+
+    "1. Una de cada diez especies reconocidas.", //2
+
+    "2. Cinco de cada diez especies reconocidas.", //3
+
+    "3. Siete de cada diez especies reconocidas. ", //4
+
+
+    "  Respuesta: Siete de cada diez especies reconocidas.", //5 
+
+
+    " Nota: 'Los diecisiete países de mayor diversidad ocupan menos del 10% de la superficie ", //6
+    "del planeta pero albergan siete de cada diez especies reconocidas.", //7
+    "El Ecuador forma parte de esta lista (Burneo, 2009).'", //8
+
+
+
+    "2. De los 25 “hot spots” o puntos excepcionales por la diversidad biológica",//9
+   " existentes en todo el mundo ecuador posee:", //10
+
+    "1. 1 hot spot", //11
+
+    "2. 3 hot spots",//12 
+
+    "3. 5 hot spots",//13 
+
+
+    "Respuesta: 3 hot spots", //14
+
+    "Nota: Tres se hallan en el Ecuador. Uno de esos puntos son las estribaciones orientales en Los Andes y",//14 
+    "alta amazonia ecuatoriana, Otro:", 
+    "el bosque lluvioso Noroccidental de la provincia de Esmeraldas,", 
+    "conocido como el Chocó, y, el último, los bosques secos y semihúmedos tropicales del sur de la", 
+    "costa ecuatoriana.", 
+
+
+
+    "3. La biodiversidad de Ecuador, es resultado de tres factores fundamentales, los son:", 
+
+    "1. La visita de dos corrientes marinas, la ubicación en el centro del planeta y la presencia de la Cordillera de los Andes.", 
+
+    "2. La visita de dos corrientes marinas, la ubicación en el centro del planeta y la hidrografía de nuestro país.", 
+
+    "3. la ubicación en el centro del plante, la presencia de la Cordillera de los Andes y las Islas Galápagos", 
+
+
+    "Respuesta:  La visita de dos corrientes marinas, la ubicación en el centro del planeta y la presencia de la Cordillera de los Andes.", 
+
+
+    "Nota: La visita de dos corrientes marinas, la ubicación en el centro del planeta y la presencia de la", 
+    "Cordillera de los Andes, que juntos y combinados, dan como resultado diversas clases de", 
+    "vegetación y ecosistemas en el Ecuador, a los cuales la flora y fauna se adaptaron por 'miles de", 
+    "generaciones' (Burneo, 2009) y especializaron, dando lugar a la especiación, endemismo y", 
+    "concentración actual de especies animales y vegetales.", 
+
+
+    "4. Que puesto ocupa Ecuador con respecto al número de mamíferos en el mundo.", 
+
+    "1. Primero", 
+
+    "2. Cuarto", 
+
+    "3. Octavo", 
+
+
+    "Respuesta: Cuarto", 
+
+    "Nota: Las 382 especies de mamíferos que existen en este país, suponen el 7% de las 5.490 especies", 
+    "registradas en el mundo.", 
+
+    "5. Que puesto ocupa Ecuador con respecto al número de aves en el mundo.", 
+
+    "1. Primero", 
+
+    "2. Cuarto", 
+
+    "3. Octavo", 
+
+
+    "Respuesta: Cuarto", 
+
+    "Nota:La riqueza de aves en Ecuador alcanza las 1660 especies, incluyendo aquellas  que han sido", 
+    "registradas en las Islas Galápagos, el Ecuador continental cuenta con 1621 especies, de las cuales 7", 
+    "son especies endémicas únicas para el país. Esta rica avifauna coloca al Ecuador como el cuarto", 
+    "país en el mundo.", 
+
+
+    "6. ¿Cuántas denominaciones por Reservas de la Biósfera ha recibido Ecuador?", 
+
+    "1. Una", 
+
+    "2.Tres", 
+
+    "3.Cinco", 
+
+
+    "Respuesta: Cinco", 
+
+    "Nota:La UNESCO a nombrado como Reservas de la Biósfera a:", 
+    " Galápagos (1984), Yasuní (1989),", 
+    " Sumaco (2000) y Podocarpus - El Cóndor (2007).", 
+
+
+    "7. En que año el Biólogo Charles Darwin, visito las Islas Galápagos", 
+
+    "1. 1833", 
+
+    "2. 1834", 
+
+    "3. 1835", 
+
+
+    "Respuesta: 1835", 
+
+    "Nota:Por un periodo de cinco semanas el barco HMS Beagle navega por las aguas de Galapagos bajo el", 
+    "comando del Capitán Robert Fitzroy. Poco sabia entonces, que le tomaría casi 25 años después de", 
+    "su visita a las Islas Galapagos, publicar el libro El Origen de las Especies.",
+  };
+
+
+
+  Ques() {
+    fondo= loadImage("fondo.jpg");  
+    fuente= loadFont("DenneShuffleEuroHollow-48.vlw");
+  }
+
+  void display() {
+    image(fondo, 0, 0);
+    fill(0);
+    textFont(fuente, 50);
+    println(lines);
+    text(lines[0], 100, height/5);
+    text(lines[1], 180, height/5+50);
+    text(lines[2], 500, height/5+250);
+    text(lines[3], 500, height/5+335);
+    text(lines[4], 500, height/5+420);
+  }
+
+  void display2() {
+    image(fondo, 0, 0);
+    fill(0);
+    textFont(fuente, 50);
+    println(lines);
+    text(lines[0], 100, height/5);
+    text(lines[1], 180, height/5+50);
+    fill(100);
+    text(lines[2], 500, height/5+250);
+    text(lines[3], 500, height/5+335);
+    fill(0);
+    text(lines[4], 500, height/5+420);
+    text(lines[6], 100, height-200);
+    text(lines[7], 300, height-150);
+    text(lines[8], 400, height-100);
+  }
+  void preguntados(){
+     
+    image(fondo, 0, 0);
+    fill(0);
+    textFont(fuente, 50);
+    println(lines);
+    text(lines[9], 100, height/5);
+    text(lines[10], 180, height/5+50);
+    text(lines[11], 500, height/5+250);
+    text(lines[12], 500, height/5+335);
+    text(lines[13], 500, height/5+420);
+    
+    
+    
+  }
+}
