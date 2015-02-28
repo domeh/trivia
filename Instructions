@@ -1,45 +1,73 @@
-class Inv {
-  
+class Ins {
+
   float tx;
   float ty;
   float x;
   float y;
-  PImage fondo;
   PImage titulo;
   PImage insbot;
   PImage inspal;
+  PImage ingbot;
+  PImage ingpal;
   PShape graf;
   PShape boton;
   PShape palanca;
-  
- Inv(){
-   
-  tx=displayWidth;
-  ty=displayHeight;
-  fondo= loadImage("fondo.jpg");
-  titulo= loadImage("trivia.png");
-  insbot= loadImage("ins boton.png");
-  inspal= loadImage("ins palanca.png");
-  graf= loadShape("controles.svg");
-  boton=graf.getChild("Capa 2");
-  palanca=graf.getChild("palanca");
- }
-  
-  void display(){
-   image(fondo,0,0);
-   image(titulo, width/2-200, -30,500,392);
-   image(insbot,300,580,360,282);
-   image(inspal,300,320,360,282); 
-   shape(palanca,900,320,350,350);
-   shape(boton,1220,460,200,200);
+  PFont fuente;
+
+  Ins() {
+    fuente=loadFont("DKPundak-48.vlw");
+    tx=displayWidth;
+    ty=displayHeight;
+    titulo=loadImage("titulo1.png");
+    insbot= loadImage("ins boton.png");
+    inspal= loadImage("ins palanca.png");
+    ingbot= loadImage("ing boton.png");
+    ingpal= loadImage("ing palanca.png");
+    graf= loadShape("controles.svg");
+    boton=graf.getChild("Capa 2");
+    palanca=graf.getChild("palanca");
   }
-  
- } 
-  
-  
-  
-  
-  
-  
-  
-  
+
+  void display() {
+    if (key=='e') {
+      textAlign(CENTER, CENTER);
+      textFont(fuente);
+      fill(100);
+      textSize(25);
+      text("english", width-240, 25);
+      textSize(40);
+      fill(0);
+      text("español", width-100, 25);
+    }
+    if (key=='i') {
+      textAlign(CENTER, CENTER);
+      textFont(fuente);
+      fill(0);
+      textSize(40);
+      text("english", width-240, 25);
+      textSize(25);
+      fill(100);
+      text("español", width-100, 25);
+      imageMode(CENTER);
+      image(ingbot, width/2+400, 650, 689, 295);
+      image(ingpal, 300, 400, 370, 292);
+    } else {
+      textAlign(CENTER, CENTER);
+      textFont(fuente);
+      fill(100);
+      textSize(25);
+      text("english", width-240, 25);
+      textSize(40);
+      fill(0);
+      text("español", width-100, 25);
+      imageMode(CENTER);
+      image(insbot, width/2+400, 650, 689, 295);
+      image(inspal, 300, 400, 370, 292);
+    }
+    imageMode(CENTER);
+    shapeMode(CORNER);
+    image(titulo, width/2, 145, 550, 550);
+    shape(boton, width/2+220, 300, 300, 300);
+    shape(palanca, 300, 410, 450, 450);
+  }
+}
