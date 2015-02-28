@@ -1,24 +1,20 @@
-class Timer{
-  int in_time;
-  int to_time;
-  
-  Timer(int tiempo){
-   to_time=tiempo; 
-    
+class Timer {
+  int savedTime;
+  int totalTime = 5000;
+
+
+  Timer() {
+
+    savedTime = millis();
   }
-  
-  void start() {
-   
-    in_time = millis(); 
-  }
-  
-   boolean pasarsig () { 
-    // Check how much time has passed
-    int tiempotrans = millis()- in_time;
-    if (tiempotrans > to_time) {
-      return true;
-    } else {
-      return false;
+
+
+  void display() {
+    int passedTime = millis() - savedTime;
+    // Has five seconds passed?
+    if (passedTime > totalTime) {
+      println( " 60 seconds have passed! " );
+      background(33, 131, 118); // Color a new background
+      //    savedTime = millis(); // Save the current time to restart the timer!
     }
   }
-}
