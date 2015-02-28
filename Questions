@@ -1,179 +1,271 @@
 class Ques {
 
-  PImage fondo;
-  PFont fuente;
-  String[] lines= {
-    "1. Existen diecisiete países de mayor diversidad ocupan menos del 10% de", //0
-    "la superficie del planeta, pero albergan:", //1
+  ArrayList<String> preguntas = new ArrayList<String>();
+  ArrayList<String> opciones = new ArrayList<String>();
+  ArrayList<String> respuestas = new ArrayList<String>();
+  ArrayList<String> info = new ArrayList<String>();
 
 
-
-    "1. Una de cada diez especies reconocidas.", //2
-
-    "2. Cinco de cada diez especies reconocidas.", //3
-
-    "3. Siete de cada diez especies reconocidas. ", //4
+  ArrayList<String> questions = new ArrayList<String>();
+  ArrayList<String> options = new ArrayList<String>();
+  ArrayList<String> answers = new ArrayList<String>();
+  ArrayList<String> informat = new ArrayList<String>();
 
 
-    "  Respuesta: Siete de cada diez especies reconocidas.", //5 
+  int posicion = 0;
+  //español
+  int opcion = 0;
+  //ingles
+  int option=0;
+  boolean respondido=false;
+  //español
+  String opcion1, opcion2, opcion3;
+  //ingles
+  String option1, option2, option3;
+
+  PFont fuente1, fuente2, fuente3;
+  String pr[] = loadStrings("preguntas.txt");
+  String op[] = loadStrings("opciones.txt");
+  String re[] = loadStrings("respuestas.txt");
+  String in[] = loadStrings("info.txt");
 
 
-    " Nota: 'Los diecisiete países de mayor diversidad ocupan menos del 10% de la superficie ", //6
-    "del planeta pero albergan siete de cada diez especies reconocidas.", //7
-    "El Ecuador forma parte de esta lista (Burneo, 2009).'", //8
+  String qu[] = loadStrings("questions.txt");
+  String opt[] = loadStrings("options.txt");
+  String an[] = loadStrings("answers.txt");
+  String inf[] = loadStrings("informat.txt");
 
 
-
-    "2. De los 25 “hot spots” o puntos excepcionales por la diversidad biológica",//9
-   " existentes en todo el mundo ecuador posee:", //10
-
-    "1. 1 hot spot", //11
-
-    "2. 3 hot spots",//12 
-
-    "3. 5 hot spots",//13 
+  PImage good;
+  PImage wrong;
 
 
-    "Respuesta: 3 hot spots", //14
+  float x;
+  float y;
+  float tam;
+  float size;
+  float tiempo;
 
-    "Nota: Tres se hallan en el Ecuador. Uno de esos puntos son las estribaciones orientales en Los Andes y",//14 
-    "alta amazonia ecuatoriana, Otro:", 
-    "el bosque lluvioso Noroccidental de la provincia de Esmeraldas,", 
-    "conocido como el Chocó, y, el último, los bosques secos y semihúmedos tropicales del sur de la", 
-    "costa ecuatoriana.", 
-
-
-
-    "3. La biodiversidad de Ecuador, es resultado de tres factores fundamentales, los son:", 
-
-    "1. La visita de dos corrientes marinas, la ubicación en el centro del planeta y la presencia de la Cordillera de los Andes.", 
-
-    "2. La visita de dos corrientes marinas, la ubicación en el centro del planeta y la hidrografía de nuestro país.", 
-
-    "3. la ubicación en el centro del plante, la presencia de la Cordillera de los Andes y las Islas Galápagos", 
-
-
-    "Respuesta:  La visita de dos corrientes marinas, la ubicación en el centro del planeta y la presencia de la Cordillera de los Andes.", 
-
-
-    "Nota: La visita de dos corrientes marinas, la ubicación en el centro del planeta y la presencia de la", 
-    "Cordillera de los Andes, que juntos y combinados, dan como resultado diversas clases de", 
-    "vegetación y ecosistemas en el Ecuador, a los cuales la flora y fauna se adaptaron por 'miles de", 
-    "generaciones' (Burneo, 2009) y especializaron, dando lugar a la especiación, endemismo y", 
-    "concentración actual de especies animales y vegetales.", 
-
-
-    "4. Que puesto ocupa Ecuador con respecto al número de mamíferos en el mundo.", 
-
-    "1. Primero", 
-
-    "2. Cuarto", 
-
-    "3. Octavo", 
-
-
-    "Respuesta: Cuarto", 
-
-    "Nota: Las 382 especies de mamíferos que existen en este país, suponen el 7% de las 5.490 especies", 
-    "registradas en el mundo.", 
-
-    "5. Que puesto ocupa Ecuador con respecto al número de aves en el mundo.", 
-
-    "1. Primero", 
-
-    "2. Cuarto", 
-
-    "3. Octavo", 
-
-
-    "Respuesta: Cuarto", 
-
-    "Nota:La riqueza de aves en Ecuador alcanza las 1660 especies, incluyendo aquellas  que han sido", 
-    "registradas en las Islas Galápagos, el Ecuador continental cuenta con 1621 especies, de las cuales 7", 
-    "son especies endémicas únicas para el país. Esta rica avifauna coloca al Ecuador como el cuarto", 
-    "país en el mundo.", 
-
-
-    "6. ¿Cuántas denominaciones por Reservas de la Biósfera ha recibido Ecuador?", 
-
-    "1. Una", 
-
-    "2.Tres", 
-
-    "3.Cinco", 
-
-
-    "Respuesta: Cinco", 
-
-    "Nota:La UNESCO a nombrado como Reservas de la Biósfera a:", 
-    " Galápagos (1984), Yasuní (1989),", 
-    " Sumaco (2000) y Podocarpus - El Cóndor (2007).", 
-
-
-    "7. En que año el Biólogo Charles Darwin, visito las Islas Galápagos", 
-
-    "1. 1833", 
-
-    "2. 1834", 
-
-    "3. 1835", 
-
-
-    "Respuesta: 1835", 
-
-    "Nota:Por un periodo de cinco semanas el barco HMS Beagle navega por las aguas de Galapagos bajo el", 
-    "comando del Capitán Robert Fitzroy. Poco sabia entonces, que le tomaría casi 25 años después de", 
-    "su visita a las Islas Galapagos, publicar el libro El Origen de las Especies.",
-  };
-
-
+  boolean ingles=false;
 
   Ques() {
-    fondo= loadImage("fondo.jpg");  
-    fuente= loadFont("DenneShuffleEuroHollow-48.vlw");
+
+
+    good = loadImage("good.png");  
+    wrong=loadImage("wrong.png"); 
+    fuente1= loadFont("DKPundak-48.vlw");
+    fuente2=loadFont("DenneShuffleEuroHollow-48.vlw");
+    fuente3=loadFont("KGSummerSunshineBlackout-48.vlw");
+    x=width/2;
+    y=height/3;
+    size=100;
+    tam=350;
+    tiempo = 1.0;
+
+
+    for (int i=0; i<pr.length; i++) {
+      preguntas.add(pr[i]);
+    }
+    for (int i=0; i<op.length; i++) {
+      opciones.add(op[i]);
+    }
+    for (int i=0; i<re.length; i++) {
+      respuestas.add(re[i]);
+    }
+    for (int i=0; i<in.length; i++) {
+      info.add(in[i]);
+    }
+
+
+    for (int i=0; i<qu.length; i++) {
+      questions.add(qu[i]);
+    }
+    for (int i=0; i<opt.length; i++) {
+      options.add(opt[i]);
+    }
+    for (int i=0; i<an.length; i++) {
+      answers.add(an[i]);
+    }
+    for (int i=0; i<inf.length; i++) {
+      informat.add(inf[i]);
+    }
   }
 
-  void display() {
-    image(fondo, 0, 0);
-    fill(0);
-    textFont(fuente, 50);
-    println(lines);
-    text(lines[0], 100, height/5);
-    text(lines[1], 180, height/5+50);
-    text(lines[2], 500, height/5+250);
-    text(lines[3], 500, height/5+335);
-    text(lines[4], 500, height/5+420);
+
+  Ques(float tiempo_) {
+
+    tiempo=tiempo_;
   }
 
-  void display2() {
-    image(fondo, 0, 0);
-    fill(0);
-    textFont(fuente, 50);
-    println(lines);
-    text(lines[0], 100, height/5);
-    text(lines[1], 180, height/5+50);
-    fill(100);
-    text(lines[2], 500, height/5+250);
-    text(lines[3], 500, height/5+335);
-    fill(0);
-    text(lines[4], 500, height/5+420);
-    text(lines[6], 100, height-200);
-    text(lines[7], 300, height-150);
-    text(lines[8], 400, height-100);
+
+
+
+  void dibujar() {
+
+
+    if (!respondido) {
+      if (ingles==false) {
+
+        fill(0);
+        textFont(fuente1, 50);
+        textAlign(CENTER);
+        textFont(fuente1);
+        textSize(40);
+        text(preguntas.get(posicion), 0.1*width, height/8, 0.8*width, 100);
+        textFont(fuente2);
+        textSize(50);
+
+        if (opcion==0) {
+          fill(0);
+          text(opcion1, 0.1*width, height/5+150, 0.8*width, 100);
+          fill(150);
+          text(opcion2, 0.1*width, height/5+295, 0.8*width, 100);
+          text(opcion3, 0.1*width, height/5+440, 0.8*width, 100);
+        }
+        if (opcion==1) {
+          fill(150);
+          text(opcion1, 0.1*width, height/5+150, 0.8*width, 100);
+          fill(0);
+          text(opcion2, 0.1*width, height/5+295, 0.8*width, 100);
+          fill(150);
+          text(opcion3, 0.1*width, height/5+440, 0.8*width, 100);
+        }
+        if (opcion==2) {
+          fill(150);
+          text(opcion1, 0.1*width, height/5+150, 0.8*width, 100);
+          text(opcion2, 0.1*width, height/5+295, 0.8*width, 100);
+          fill(0);
+          text(opcion3, 0.1*width, height/5+440, 0.8*width, 100);
+        }
+      } else {
+
+        textAlign(CENTER);
+        fill(20);
+        textFont(fuente3);
+        textSize(30);
+        textAlign(CENTER, CENTER);
+        text(info.get(posicion), 0.03*width, height-450, 0.93*width, 400);
+
+        if (opciones.get(posicion).split("/")[opcion].equals(respuestas.get(posicion))) {
+          imageMode(CENTER);
+          image(good, x, y, size, size);
+        } else {
+          imageMode(CENTER);
+          image(wrong, x, y, size, size);
+        }
+      }
+    }
+
+
+    if (ingles==true) {
+
+      fill(0);
+      textFont(fuente1, 50);
+      textAlign(CENTER);
+      textFont(fuente1);
+      textSize(40);
+      text(questions.get(posicion), 0.1*width, height/8, 0.8*width, 100);
+      textFont(fuente2);
+      textSize(50);
+
+      if (option==0) {
+        fill(0);
+        text(opcion1, 0.1*width, height/5+150, 0.8*width, 100);
+        fill(150);
+        text(opcion2, 0.1*width, height/5+295, 0.8*width, 100);
+        text(opcion3, 0.1*width, height/5+440, 0.8*width, 100);
+      }
+      if (option==1) {
+        fill(150);
+        text(opcion1, 0.1*width, height/5+150, 0.8*width, 100);
+        fill(0);
+        text(opcion2, 0.1*width, height/5+295, 0.8*width, 100);
+        fill(150);
+        text(opcion3, 0.1*width, height/5+440, 0.8*width, 100);
+      }
+      if (option==2) {
+        fill(150);
+        text(opcion1, 0.1*width, height/5+150, 0.8*width, 100);
+        text(opcion2, 0.1*width, height/5+295, 0.8*width, 100);
+        fill(0);
+        text(opcion3, 0.1*width, height/5+440, 0.8*width, 100);
+      }
+    } else {
+
+      textAlign(CENTER);
+      fill(20);
+      textFont(fuente3);
+      textSize(30);
+      textAlign(CENTER, CENTER);
+      text(informat.get(posicion), 0.03*width, height-450, 0.93*width, 400);
+      if (options.get(posicion).split("/")[opcion].equals(answers.get(posicion))) {
+        imageMode(CENTER);
+        image(good, x, y, size, size);
+      } else {
+        imageMode(CENTER);
+        image(wrong, x, y, size, size);
+      }
+    }
   }
-  void preguntados(){
-     
-    image(fondo, 0, 0);
-    fill(0);
-    textFont(fuente, 50);
-    println(lines);
-    text(lines[9], 100, height/5);
-    text(lines[10], 180, height/5+50);
-    text(lines[11], 500, height/5+250);
-    text(lines[12], 500, height/5+335);
-    text(lines[13], 500, height/5+420);
+
+
+  void setPosicion(int pos_) {
+    respondido=false;
+    posicion = pos_;
+    if(ingles==false){
+    opcion1 = opciones.get(posicion).split("/")[0];
+    opcion2 = opciones.get(posicion).split("/")[1];
+    opcion3 = opciones.get(posicion).split("/")[2];
+    }
+    if(ingles==true){
+    option1 = options.get(posicion).split("/")[0];
+    option2 = options.get(posicion).split("/")[1];
+    option3 = options.get(posicion).split("/")[2];
+    }
     
     
+  }
+
+  void setOpcion(int op_) {
+    opcion = op_;
+    option=op_;
+  }
+
+  void seleccionarIdioma() {
+    if (key=='e') {
+      ingles=false;
+    }
+
+    if (key=='i') {
+      ingles=true;
+    }
+  }
+
+
+  void seleccionarRespuesta() {
+
+    respondido=true;
+
+
+    if (opciones.get(posicion).split("/")[opcion].equals(respuestas.get(posicion))) {
+      println("respuesta correcta");
+    } else {
+      println("incorrecto");
+    }
     
+    if (options.get(posicion).split("/")[option].equals(answers.get(posicion))) {
+      println("respuesta correcta");
+    } else {
+      println("incorrecto");
+    }
+  }
+  void setAnim(int anim_) {
+    respondido=true;
+    size=anim_;
+  }
+  void actualizar() {
+    if (respondido==true) {
+      Ani.to(this, tiempo, "size", tam, Ani.BOUNCE_OUT);
+    }
   }
 }
