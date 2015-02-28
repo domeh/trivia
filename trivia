@@ -1,35 +1,66 @@
-Inv instructions;
-Ques pregunta;
-Timer timer;
-void setup() {
+import de.looksgood.ani.*;
+import de.looksgood.ani.easing.*;
 
+Ins instructions;
+Ques pregunta;
+Idioma idiom;
+Timer timer;
+int i;
+int opcion=0;
+
+void setup() {
   size(displayWidth, displayHeight);
-  instructions=new Inv();
+  Ani.init(this);
+  idiom= new Idioma();
+  instructions=new Ins();
   pregunta= new Ques();
-  instructions.display();
-  timer=new Timer(5000);
+  timer= new Timer();
+  i=0;
 }
 
 
 void draw() {
+
+  background(33, 131, 118);
+
+  if (i==0) {
+    instructions.display();
+  } else {
+    
+    pregunta.dibujar();
+    
 }
-
-void mouseClicked() {
-pregunta.display();
-
-  if (mouseX>=200&&mouseY<=1000&&mouseY>=400&&mouseY<=600) { //500, height/5+420
-    timer.start();
-    pregunta.display2();
-    if(timer.pasarsig()){
-     pregunta.preguntados(); 
-    }else{
-      pregunta.display2();
-    }
-  }
 }
 
 void keyPressed() {
+pregunta.seleccionarIdioma();
   if (keyCode==ENTER) {
-    pregunta.display();
+    if (i<7) {
+      pregunta.setAnim(i);
+      pregunta.setPosicion(i);
+
+
+      i=i+1;
+    } else {
+      i=0;
+      pregunta.setAnim(i);
+      pregunta.setPosicion(i);
+    }
+  }
+  if (keyCode==UP) {
+    if (opcion>0)opcion--;
+    pregunta.setOpcion(opcion);
+  
+  }
+
+  
+  if (keyCode==DOWN) {
+    if (opcion<2)opcion++;
+    pregunta.setOpcion(opcion);
+  }
+  if (key=='s') {
+
+    pregunta.seleccionarRespuesta();
+    pregunta.actualizar();
   }
 }
